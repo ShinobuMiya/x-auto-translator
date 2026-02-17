@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>X.com Auto-Translation</h1>
+
+    <div class="row">
+      <label for="toggle">Auto-Translation</label>
+      <input type="checkbox" id="toggle" checked>
+    </div>
+
+    <div class="row">
+      <label for="engine">Translation Engine</label>
+      <select id="engine">
+        <option value="google">Google Translation</option>
+        <option value="libre">LibreTranslate</option>
+        <option value="google+libre">Google (Libre Fallback)</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <label for="targetLang">Translation Language</label>
+      <select id="targetLang">
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="zh-CN">中文(简体)</option>
+        <option value="zh-TW">中文(繁體)</option>
+        <option value="ko">한국어</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="pt">Português</option>
+        <option value="ru">Русский</option>
+        <option value="ar">العربية</option>
+        <option value="hi">हिन्दी</option>
+        <option value="th">ไทย</option>
+        <option value="vi">Tiếng Việt</option>
+        <option value="id">Bahasa Indonesia</option>
+      </select>
+    </div>
+
+    <div class="row" id="libreUrlRow">
+      <label for="libreUrl">LibreTranslate URL</label>
+      <input type="text" id="libreUrl" placeholder="http://localhost:5000/translate">
+    </div>
+
+    <div class="row" id="libreUrlBtnRow">
+      <button id="saveUrl">Save</button>
+    </div>
+
+    <div class="stats">
+      <span>Translated: <strong id="count">0</strong> Posts</span>
+    </div>
+
+    <div class="status" id="status"></div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
