@@ -1,0 +1,45 @@
+This product includes the following third-party software:
+
+================================================================================
+tesseract.js (v7.0.0)
+https://github.com/naptha/tesseract.js
+License: Apache License 2.0
+Copyright: Tesseract.js contributors
+Files: tesseract.min.js, worker.min.js
+
+================================================================================
+tesseract.js-core (v7.0.0)
+https://github.com/nicolo-ribaudo/tesseract.js-core
+License: Apache License 2.0
+Copyright: Tesseract.js contributors
+Files: tesseract-core-lstm.wasm.js,
+       tesseract-core-simd-lstm.wasm.js,
+       tesseract-core-relaxedsimd-lstm.wasm.js
+
+================================================================================
+regenerator-runtime
+https://github.com/facebook/regenerator
+License: MIT
+Copyright (c) 2014-present, Facebook, Inc.
+(bundled within tesseract.min.js and worker.min.js)
+
+================================================================================
+buffer (browser)
+https://github.com/feross/buffer
+License: MIT
+Copyright (c) Feross Aboukhadijeh <https://feross.org>
+(bundled within worker.min.js)
+
+================================================================================
+ieee754
+https://github.com/feross/ieee754
+License: BSD-3-Clause
+Copyright (c) Feross Aboukhadijeh <https://feross.org/opensource>
+(bundled within worker.min.js)
+
+================================================================================
+zlib.js
+https://github.com/nicolo-ribaudo/tesseract.js-core
+License: MIT
+Copyright (c) 2012 imaya
+(bundled within worker.min.js)
