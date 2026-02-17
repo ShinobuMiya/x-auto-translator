@@ -11,6 +11,26 @@
   const RETRY_DELAY_MS = 2000;
   const IMAGE_SELECTOR = 'div[data-testid="tweetPhoto"] img';
 
+  // Safe wrapper for chrome.runtime.sendMessage
+  // Handles Manifest V3 service worker lifecycle errors
+  let contextInvalidated = false;
+  function safeSendMessage(msg) {
+    if (contextInvalidated) return Promise.resolve(null);
+    return chrome.runtime.sendMessage(msg).catch((err) => {
+      if (err.message?.includes("Extension context invalidated")) {
+        console.warn("[X-Translate] Extension context invalidated. Please refresh the page.");
+        contextInvalidated = true;
+        observer.disconnect();
+        return null;
+      }
+      if (err.message?.includes("message channel closed")) {
+        console.warn("[X-Translate] Message channel closed, will retry");
+        return null;
+      }
+      throw err;
+    });
+  }
+
   let enabled = true;
   let libreUrl = "";
   let targetLang = "ja";
@@ -109,7 +129,7 @@
     console.log("[X-Translate] Translating:", text.substring(0, 40));
 
     try {
-      const response = await chrome.runtime.sendMessage({
+      const response = await safeSendMessage({
         type: "translate",
         text: text,
         libreUrl: libreUrl,
@@ -207,7 +227,7 @@
 
       console.log("[X-Translate] OCR text:", text.substring(0, 60));
 
-      const response = await chrome.runtime.sendMessage({
+      const response = await safeSendMessage({
         type: "translate",
         text: text,
         libreUrl: libreUrl,
